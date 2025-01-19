@@ -31,7 +31,7 @@ def main():
                 
                 # Upload the file to GCS
                 blob = bucket.blob(blob_name)
-                blob.upload_from_filename(local_file, content_type=content_type)
+                blob.upload_from_filename(local_file, content_type=content_type, if_generation_match=0)
                 print(f"Uploaded: {local_file} -> gs://{bucket_name}/{blob_name} with Content-Type {content_type}")
 
     except Exception as e:
